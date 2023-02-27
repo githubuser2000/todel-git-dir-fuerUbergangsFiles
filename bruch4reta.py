@@ -67,10 +67,14 @@ def dictToList(dict_: dict) -> list:
     return liste
 
 
-def bla(bruchSpaltenListList: list):
+def get2StrsFromBSlistList(bruchSpaltenListList: list) -> tuple[str, str]:
     neuZahlVorBruchstrich = []
     neuZahlNachBruchstrich = []
     for i, bSLL in enumerate(bruchSpaltenListList):
         neuZahlVorBruchstrich += dictToList(bSLL[1]) + dictToList(bSLL[2])
         neuZahlNachBruchstrich += dictToList(bSLL[0]) + dictToList(bSLL[1])
     return "".join(neuZahlVorBruchstrich), "".join(neuZahlNachBruchstrich)
+
+
+def bla(text):
+    return get2StrsFromBSlistList(bruchSpalt(text))
