@@ -2,6 +2,21 @@
 # -*- coding: utf-8 -*-
 
 
+def grKl(A: set, B: set) -> tuple[set, set]:
+    C = set()
+    D = set()
+    for a in A:
+        if a > max(B):
+            C.add(a)
+        elif a < min(B):
+            D.add(a)
+    return C, D
+
+
+def vgetDictLimtedByKeyList(d: dict, keys) -> dict:
+    return {k: d[k] for k in keys if k in d}
+
+
 def bruchSpalt(text) -> list:
     bruchSpalten: list[str] = text.split("/")
     bruchSpaltenNeu = []
@@ -37,6 +52,14 @@ def bruchSpalt(text) -> list:
             flag = False
         if flag is False:
             return []
-        bsNeu = [zahl, keineZahl]
+        zahlenGroesserSet, zahlenKleinerSet = grKl(zahlSet, keineZahlSet)
+        zahlenKleinerDict: dict = getDictLimtedByKeyList(zahl, zahlenKleinerSet)
+        zahlenGroesserDict: dict = getDictLimtedByKeyList(zahl, zahlenGroesserSet)
+        bsNeu = [zahlenKleinerDict, keineZahl, zahlenGroesserDict]
         bruchSpaltenNeu += [bsNeu]
     return bruchSpaltenNeu
+
+
+def bla(bruchSpaltenListList: list):
+    neuStr = ""
+    # for i, bSLL in enumerate(bruchSpaltenListList):
