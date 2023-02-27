@@ -97,8 +97,12 @@ def get2StrsFromBSlistList(bruchSpaltenListList: list) -> tuple[str, str]:
                 zahlenDanach = range(
                     zahlDavorNachBruchstrich, zahlDanachNachBruchStrich
                 )
-            neuZahlVorBruchstrich += chars1List + zahl2List
-            neuZahlNachBruchstrich += zahl0List + chars1List
+                print(["zahlenDavor", zahlenDavor, "zahlenDanach", zahlenDanach])
+                neuZahlVorBruchstrich += chars1List + zahl2List
+                neuZahlNachBruchstrich += zahl0List + chars1List
+            else:
+                neuZahlVorBruchstrich += chars1List + zahl2List
+                neuZahlNachBruchstrich += zahl0List + chars1List
             lastZahlVorBruchStrich = zahl2List
             lastZahlNachBruchStrich = zahl0List
         elif len(bSLL) == 1:
