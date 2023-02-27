@@ -5,6 +5,8 @@
 def grKl(A: set, B: set) -> tuple[set, set]:
     C = set()
     D = set()
+    if len(B) == 0:
+        return A, A
     for a in A:
         if a > max(B):
             C.add(a)
@@ -52,10 +54,13 @@ def bruchSpalt(text) -> list:
             flag = False
         if flag is False:
             return []
-        zahlenGroesserSet, zahlenKleinerSet = grKl(zahlSet, keineZahlSet)
-        zahlenKleinerDict: dict = getDictLimtedByKeyList(zahl, zahlenKleinerSet)
-        zahlenGroesserDict: dict = getDictLimtedByKeyList(zahl, zahlenGroesserSet)
-        bsNeu = [zahlenKleinerDict, keineZahl, zahlenGroesserDict]
+        if len(keineZahlSet) > 0:
+            zahlenGroesserSet, zahlenKleinerSet = grKl(zahlSet, keineZahlSet)
+            zahlenKleinerDict: dict = getDictLimtedByKeyList(zahl, zahlenKleinerSet)
+            zahlenGroesserDict: dict = getDictLimtedByKeyList(zahl, zahlenGroesserSet)
+            bsNeu = [zahlenKleinerDict, keineZahl, zahlenGroesserDict]
+        else:
+            bsNeu = [zahl]
         bruchSpaltenNeu += [bsNeu]
     return bruchSpaltenNeu
 
@@ -71,8 +76,16 @@ def get2StrsFromBSlistList(bruchSpaltenListList: list) -> tuple[str, str]:
     neuZahlVorBruchstrich = []
     neuZahlNachBruchstrich = []
     for i, bSLL in enumerate(bruchSpaltenListList):
-        neuZahlVorBruchstrich += dictToList(bSLL[1]) + dictToList(bSLL[2])
-        neuZahlNachBruchstrich += dictToList(bSLL[0]) + dictToList(bSLL[1])
+        if len(bSLL) == 3:
+            neuZahlVorBruchstrich += dictToList(bSLL[1]) + dictToList(bSLL[2])
+            neuZahlNachBruchstrich += dictToList(bSLL[0]) + dictToList(bSLL[1])
+        elif len(bSLL) == 1:
+            if i == 0:
+                neuZahlVorBruchstrich += dictToList(bSLL[0])
+            elif i == len(bruchSpaltenListList) - 1:
+                neuZahlNachBruchstrich += dictToList(bSLL[0])
+            else:
+                raise
     return "".join(neuZahlVorBruchstrich), "".join(neuZahlNachBruchstrich)
 
 
