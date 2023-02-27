@@ -79,17 +79,19 @@ def get2StrsFromBSlistList(bruchSpaltenListList: list) -> tuple[str, str]:
     charsNachBruchStrich = []
     lastZahlVorBruchStrich = None
     lastZahlNachBruchStrich = None
+    lastZahlVorBruchStrich2 = None
+    lastZahlNachBruchStrich2 = None
     for i, bSLL in enumerate(bruchSpaltenListList):
         zahl0List = dictToList(bSLL[0])
         if len(bSLL) == 3:
             chars1List = dictToList(bSLL[1])
             zahl2List = dictToList(bSLL[2])
 
-            if tuple(bSLL[1].values()) == ("-",):
-                print("jaa")
-                zahlDavorVorBruchstrich = int("".join(lastZahlVorBruchStrich))
+            if flag:
+                flag = False
+                zahlDavorVorBruchstrich = int("".join(lastZahlVorBruchStrich2))
                 zahlDavorNachBruchstrich = int("".join(lastZahlNachBruchStrich))
-                zahlDanachVorBruchStrich = int("".join(zahl2List))
+                zahlDanachVorBruchStrich = int("".join(lastZahlVorBruchStrich))
                 zahlDanachNachBruchStrich = int("".join(zahl0List))
                 zahlenDavor = range(
                     zahlDavorVorBruchstrich, zahlDanachVorBruchStrich + 1
@@ -98,19 +100,25 @@ def get2StrsFromBSlistList(bruchSpaltenListList: list) -> tuple[str, str]:
                     zahlDavorNachBruchstrich, zahlDanachNachBruchStrich
                 )
                 print(["zahlenDavor", zahlenDavor, "zahlenDanach", zahlenDanach])
-                neuZahlVorBruchstrich += chars1List + zahl2List
-                neuZahlNachBruchstrich += zahl0List + chars1List
-            else:
-                neuZahlVorBruchstrich += chars1List + zahl2List
-                neuZahlNachBruchstrich += zahl0List + chars1List
+            elif tuple(bSLL[1].values()) == ("-",):
+                print("jaa")
+                flag = True
+            neuZahlVorBruchstrich += chars1List + zahl2List
+            neuZahlNachBruchstrich += zahl0List + chars1List
+            lastZahlVorBruchStrich2 = lastZahlVorBruchStrich
+            lastZahlNachBruchStrich2 = lastZahlNachBruchStrich
             lastZahlVorBruchStrich = zahl2List
             lastZahlNachBruchStrich = zahl0List
         elif len(bSLL) == 1:
             if i == 0:
                 neuZahlVorBruchstrich += zahl0List
+                lastZahlVorBruchStrich2 = lastZahlVorBruchStrich
+                lastZahlNachBruchStrich2 = lastZahlNachBruchStrich
                 lastZahlVorBruchStrich = zahl0List
             elif i == len(bruchSpaltenListList) - 1:
                 neuZahlNachBruchstrich += zahl0List
+                lastZahlVorBruchStrich2 = lastZahlVorBruchStrich
+                lastZahlNachBruchStrich2 = lastZahlNachBruchStrich
                 lastZahlNachBruchStrich = zahl0List
             else:
                 raise
