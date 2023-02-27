@@ -5,6 +5,8 @@
 def bruchSpalt(text):
     bruchSpalten = text.split("/")
     bruchSpaltenNeu = []
+    if len(bruchSpalten) < 2:
+        return []
     for k, bS in enumerate(bruchSpalten):
         zahl, keineZahl, bsNeu = {}, {}, []
         for i, char in enumerate(bS):
@@ -16,11 +18,19 @@ def bruchSpalt(text):
         allVergleich = [zahl > c for c, zahl in zip(keineZahl.keys(), zahl.keys())]
         zahlSet = set(zahl.keys())
         keineZahlSet = set(keineZahl.keys())
-        if k == 0 and all(allVergleich):
+        if len(zahlSet) == 0:
+            return []
+        anfang, ende = k == 0, k == len(bruchSpalten) - 1
+        if anfang and all(allVergleich):
             flag = True
-        elif k == len(bS) - 1 and not any(allVergleich):
+        elif ende and not any(allVergleich):
+            print(allVergleich)
             flag = True
-        elif keineZahlSet.issubset(range(min(zahlSet) + 1, max(zahlSet))):
+        elif (
+            not anfang
+            and not ende
+            and keineZahlSet.issubset(range(min(zahlSet) + 1, max(zahlSet)))
+        ):
             flag = True
         else:
             flag = False
