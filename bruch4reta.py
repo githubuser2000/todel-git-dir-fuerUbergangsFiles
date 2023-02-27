@@ -81,28 +81,29 @@ def get2StrsFromBSlistList(bruchSpaltenListList: list) -> tuple[str, str]:
     lastZahlNachBruchStrich = None
     lastZahlVorBruchStrich2 = None
     lastZahlNachBruchStrich2 = None
+    flag = False
     for i, bSLL in enumerate(bruchSpaltenListList):
         zahl0List = dictToList(bSLL[0])
+        if flag:
+            print("jaa2")
+            flag = False
+            zahlDavorVorBruchstrich = int("".join(lastZahlVorBruchStrich2))
+            zahlDavorNachBruchstrich = int("".join(lastZahlNachBruchStrich))
+            zahlDanachVorBruchStrich = int("".join(lastZahlVorBruchStrich))
+            zahlDanachNachBruchStrich = int("".join(zahl0List))
+            zahlenDavor = range(zahlDavorVorBruchstrich, zahlDanachVorBruchStrich + 1)
+            zahlenDanach = range(
+                zahlDavorNachBruchstrich, zahlDanachNachBruchStrich + 1
+            )
+            print(["zahlenDavor", zahlenDavor, "zahlenDanach", zahlenDanach])
         if len(bSLL) == 3:
+            if tuple(bSLL[1].values()) == ("-",):
+                print("jaa1")
+                flag = True
+
             chars1List = dictToList(bSLL[1])
             zahl2List = dictToList(bSLL[2])
 
-            if flag:
-                flag = False
-                zahlDavorVorBruchstrich = int("".join(lastZahlVorBruchStrich2))
-                zahlDavorNachBruchstrich = int("".join(lastZahlNachBruchStrich))
-                zahlDanachVorBruchStrich = int("".join(lastZahlVorBruchStrich))
-                zahlDanachNachBruchStrich = int("".join(zahl0List))
-                zahlenDavor = range(
-                    zahlDavorVorBruchstrich, zahlDanachVorBruchStrich + 1
-                )
-                zahlenDanach = range(
-                    zahlDavorNachBruchstrich, zahlDanachNachBruchStrich
-                )
-                print(["zahlenDavor", zahlenDavor, "zahlenDanach", zahlenDanach])
-            elif tuple(bSLL[1].values()) == ("-",):
-                print("jaa")
-                flag = True
             neuZahlVorBruchstrich += chars1List + zahl2List
             neuZahlNachBruchstrich += zahl0List + chars1List
             lastZahlVorBruchStrich2 = lastZahlVorBruchStrich
