@@ -75,18 +75,38 @@ def dictToList(dict_: dict) -> list:
 def get2StrsFromBSlistList(bruchSpaltenListList: list) -> tuple[str, str]:
     neuZahlVorBruchstrich = []
     neuZahlNachBruchstrich = []
+    charsVorBruchStrich = []
+    charsNachBruchStrich = []
+    lastZahlVorBruchStrich = None
+    lastZahlNachBruchStrich = None
     for i, bSLL in enumerate(bruchSpaltenListList):
+        zahl0List = dictToList(bSLL[0])
         if len(bSLL) == 3:
-            neuZahlVorBruchstrich += dictToList(bSLL[1]) + dictToList(bSLL[2])
-            neuZahlNachBruchstrich += dictToList(bSLL[0]) + dictToList(bSLL[1])
+            chars1List = dictToList(bSLL[1])
+            zahl2List = dictToList(bSLL[2])
+
+            if tuple(bSLL[1].values()) == ("-",):
+                print("jaa")
+                for neuZahl in range(bSSL[0], bSSL[2] + 1):
+                    pass
+            neuZahlVorBruchstrich += chars1List + zahl2List
+            neuZahlNachBruchstrich += zahl0List + chars1List
+            lastZahlVorBruchStrich = zahl2List
+            lastZahlNachBruchStrich = zahl0List
         elif len(bSLL) == 1:
             if i == 0:
-                neuZahlVorBruchstrich += dictToList(bSLL[0])
+                neuZahlVorBruchstrich += zahl0List
+                lastZahlVorBruchStrich = zahl0List
             elif i == len(bruchSpaltenListList) - 1:
-                neuZahlNachBruchstrich += dictToList(bSLL[0])
+                neuZahlNachBruchstrich += zahl0List
+                lastZahlNachBruchStrich = zahl0List
             else:
                 raise
     return "".join(neuZahlVorBruchstrich), "".join(neuZahlNachBruchstrich)
+
+
+def createRangesForBruchLists():
+    pass
 
 
 def bla(text):
