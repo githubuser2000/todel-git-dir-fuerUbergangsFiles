@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 
-def bruchSpalt(text):
-    bruchSpalten = text.split("/")
+def bruchSpalt(text) -> list:
+    bruchSpalten: list[str] = text.split("/")
     bruchSpaltenNeu = []
     if len(bruchSpalten) < 2:
         return []
@@ -14,17 +14,18 @@ def bruchSpalt(text):
                 zahl[i] = char
             else:
                 keineZahl[i] = char
-        flag = False
-        allVergleich = [zahl > c for c, zahl in zip(keineZahl.keys(), zahl.keys())]
-        zahlSet = set(zahl.keys())
-        keineZahlSet = set(keineZahl.keys())
+        flag: bool = False
+        allVergleich: list[bool] = [
+            zahl > c for c, zahl in zip(keineZahl.keys(), zahl.keys())
+        ]
+        zahlSet: set = set(zahl.keys())
+        keineZahlSet: set = set(keineZahl.keys())
         if len(zahlSet) == 0:
             return []
         anfang, ende = k == 0, k == len(bruchSpalten) - 1
         if anfang and all(allVergleich):
             flag = True
         elif ende and not any(allVergleich):
-            print(allVergleich)
             flag = True
         elif (
             not anfang
