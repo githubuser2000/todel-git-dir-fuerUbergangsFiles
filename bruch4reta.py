@@ -13,7 +13,7 @@ def grKl(A: set, B: set) -> tuple[set, set]:
     return C, D
 
 
-def vgetDictLimtedByKeyList(d: dict, keys) -> dict:
+def getDictLimtedByKeyList(d: dict, keys) -> dict:
     return {k: d[k] for k in keys if k in d}
 
 
@@ -60,6 +60,17 @@ def bruchSpalt(text) -> list:
     return bruchSpaltenNeu
 
 
+def dictToList(dict_: dict) -> list:
+    liste = []
+    for key, value in dict_.items():
+        liste += [value]
+    return liste
+
+
 def bla(bruchSpaltenListList: list):
-    neuStr = ""
-    # for i, bSLL in enumerate(bruchSpaltenListList):
+    neuZahlVorBruchstrich = []
+    neuZahlNachBruchstrich = []
+    for i, bSLL in enumerate(bruchSpaltenListList):
+        neuZahlVorBruchstrich += dictToList(bSLL[1]) + dictToList(bSLL[2])
+        neuZahlNachBruchstrich += dictToList(bSLL[0]) + dictToList(bSLL[1])
+    return "".join(neuZahlVorBruchstrich), "".join(neuZahlNachBruchstrich)
