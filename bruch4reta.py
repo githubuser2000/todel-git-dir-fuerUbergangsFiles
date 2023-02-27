@@ -87,8 +87,16 @@ def get2StrsFromBSlistList(bruchSpaltenListList: list) -> tuple[str, str]:
 
             if tuple(bSLL[1].values()) == ("-",):
                 print("jaa")
-                for neuZahl in range(bSSL[0], bSSL[2] + 1):
-                    pass
+                zahlDavorVorBruchstrich = int("".join(lastZahlVorBruchStrich))
+                zahlDavorNachBruchstrich = int("".join(lastZahlNachBruchStrich))
+                zahlDanachVorBruchStrich = int("".join(zahl2List))
+                zahlDanachNachBruchStrich = int("".join(zahl0List))
+                zahlenDavor = range(
+                    zahlDavorVorBruchstrich, zahlDanachVorBruchStrich + 1
+                )
+                zahlenDanach = range(
+                    zahlDavorNachBruchstrich, zahlDanachNachBruchStrich
+                )
             neuZahlVorBruchstrich += chars1List + zahl2List
             neuZahlNachBruchstrich += zahl0List + chars1List
             lastZahlVorBruchStrich = zahl2List
