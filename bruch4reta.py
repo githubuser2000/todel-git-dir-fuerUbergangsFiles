@@ -104,9 +104,9 @@ def bruchSpalt(text) -> list:
                     else bruchSpaltenNeu[-1][1].values()
                 )
                 nachZahl2 = tuple(nachZahl2)
-                bruchSpaltenNeu2 += [vorZahl1, [zahl1 + zahl2], nachZahl2]
+                bruchSpaltenNeu2 += [vorZahl1, zahl1 + zahl2, nachZahl2]
             else:
-                bruchSpaltenNeu2 += [vorZahl1, [zahl1 + zahl2]]
+                bruchSpaltenNeu2 += [vorZahl1, zahl1 + zahl2]
         elif k == len(bruchSpalten) - 1 and k > 1:
             vorZahl1 = (
                 () if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1].values()
@@ -124,7 +124,7 @@ def bruchSpalt(text) -> list:
                 () if len(bruchSpaltenNeu[-1]) == 1 else bruchSpaltenNeu[-1][1].values()
             )
             nachZahl2 = tuple(nachZahl2)
-            bruchSpaltenNeu2 += [vorZahl1, [zahl1 + zahl2], nachZahl2]
+            bruchSpaltenNeu2 += [vorZahl1, zahl1 + zahl2, nachZahl2]
         elif k > 1:
             vorZahl1 = (
                 () if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1].values()
@@ -138,7 +138,7 @@ def bruchSpalt(text) -> list:
             zahl2 = bruchSpaltenNeu[-1][0].values()
             zahl1 = tuple(zahl1)
             zahl2 = tuple(zahl2)
-            bruchSpaltenNeu2 += [vorZahl1, [zahl1 + zahl2]]
+            bruchSpaltenNeu2 += [vorZahl1, zahl1 + zahl2]
             # return bruchSpaltenNeu, bruchSpaltenNeu2
     return bruchSpaltenNeu2
 
@@ -197,9 +197,25 @@ def dictToList(dict_: dict) -> list:
 #    return "".join(neuZahlVorBruchstrich), "".join(neuZahlNachBruchstrich)
 
 
-def createRangesForBruchLists():
-    pass
-
-
-def bla(text):
-    return get2StrsFromBSlistList(bruchSpalt(text))
+def createRangesForBruchLists(bruchList: list):
+    n1, n2 = [], []
+    flag = 0
+    ergebnis = []
+    for b in bruchList:
+        if flag > 3:
+            return []
+        elif flag == 3:
+            ergebnis += [range(n1[-2], n1[-1] + 1), range(n2[-2], n2[-1] + 1)]
+        if len(b) == 2 and (b[0] + b[1]).isdecimal():
+            n1 += [int(b[0])]
+            n2 += [int(b[1])]
+            flag += 1
+        elif len(b) == 1 and b[0] == "-":
+            # n1 += ["-"]
+            # n2 += ["-"]
+            flag += 1
+        else:
+            # n1 += ["|"]
+            # n2 += ["|"]
+            flag = 0
+    return ergebnis
