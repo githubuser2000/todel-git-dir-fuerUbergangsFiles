@@ -68,6 +68,7 @@ def bruchSpalt(text) -> list:
             flag = False
         if flag is False:
             return []
+        # bsAlt = bsNeu
         if len(keineZahlSet) > 0:
             zahlenGroesserSet, zahlenKleinerSet = grKl(zahlSet, keineZahlSet)
             """siehe erklärung der Fkt in Fkt"""
@@ -80,21 +81,51 @@ def bruchSpalt(text) -> list:
         bruchSpaltenNeu += [bsNeu]
 
         if k == 1:
-            bruchSpaltenNeu2 = [
-                keineZahlBefore,
-                [bruchSpaltenNeu[0][0], bruchSpaltenNeu[1][0]],
-                keineZahl,
-            ]
+            vorZahl1 = {} if len(bruchSpaltenNeu[0]) == 1 else bruchSpaltenNeu[0][1]
+            zahl1 = (
+                bruchSpaltenNeu[0][0]
+                if len(bruchSpaltenNeu[0]) == 1
+                else bruchSpaltenNeu[0][2]
+            )
+            zahl2 = bruchSpaltenNeu[1][0]
+            bruchSpaltenNeu2 += [vorZahl1, [zahl1, zahl2]]
         elif k == len(bruchSpalten) - 1 and k > 1:
-            bruchSpaltenNeu2 += [
-                keineZahl,
-                [bruchSpaltenNeu[-2][-1], bruchSpaltenNeu[-1][0]],
-            ]
+            vorZahl1 = {} if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1]
+            zahl1 = (
+                bruchSpaltenNeu[-2][0]
+                if len(bruchSpaltenNeu[-2]) == 1
+                else bruchSpaltenNeu[-2][2]
+            )
+            zahl2 = bruchSpaltenNeu[-1][0]
+            nachZahl2 = {} if len(bruchSpaltenNeu[-1]) == 1 else bruchSpaltenNeu[-1][1]
+            bruchSpaltenNeu2 += [vorZahl1, [zahl1, zahl2], nachZahl2]
         elif k > 1:
-            bruchSpaltenNeu2 += [
-                [bruchSpaltenNeu[-2][-1], bruchSpaltenNeu[-1][0]],
-                keineZahl,
-            ]
+            vorZahl1 = {} if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1]
+            zahl1 = (
+                bruchSpaltenNeu[-2][0]
+                if len(bruchSpaltenNeu[-2]) == 1
+                else bruchSpaltenNeu[-2][2]
+            )
+            zahl2 = bruchSpaltenNeu[-1][0]
+            bruchSpaltenNeu2 += [vorZahl1, [zahl1, zahl2]]
+        else:
+            return []
+        # if k == 1:
+        #    bruchSpaltenNeu2 = [
+        #        keineZahlBefore,
+        #        [bruchSpaltenNeu[0][0], bruchSpaltenNeu[1][0]],
+        #        keineZahl,
+        #    ]
+        # elif k == len(bruchSpalten) - 1 and k > 1:
+        #    bruchSpaltenNeu2 += [
+        #        keineZahl,
+        #        [bruchSpaltenNeu[-2][-1], bruchSpaltenNeu[-1][0]],
+        #    ]
+        # elif k > 1:
+        #    bruchSpaltenNeu2 += [
+        #        [bruchSpaltenNeu[-2][-1], bruchSpaltenNeu[-1][0]],
+        #        keineZahl,
+        #    ]
         # if len(bruchSpaltenNeu) > 1:
         #    bruchSpaltenNeu2 += [bruchSpaltenNeu[0], bruchSpaltenNeu[1][0]]
         # if len(bruchSpaltenNeu) > 2:
