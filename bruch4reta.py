@@ -1,5 +1,6 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
+from collections import OrderedDict
 
 
 def grKl(A: set, B: set) -> tuple[set, set]:
@@ -23,7 +24,7 @@ def getDictLimtedByKeyList(d: dict, keys) -> dict:
     """
     Gibt ein dict zurück, das aus einem dict gebildet wird, aber davon nur das nimmt, was an mehreren keys genommen werden soll.
     """
-    return {k: d[k] for k in keys if k in d}
+    return OrderedDict({k: d[k] for k in keys if k in d})
 
 
 def bruchSpalt(text) -> list:
@@ -33,10 +34,10 @@ def bruchSpalt(text) -> list:
     if len(bruchSpalten) < 2:
         """Ein Bruch hat immer mindestens 2 Zahlen"""
         return []
-    keineZahl = {}
+    keineZahl = OrderedDict()
     for k, bS in enumerate(bruchSpalten):
         keineZahlBefore = keineZahl
-        zahl, keineZahl, bsNeu = {}, {}, []
+        zahl, keineZahl, bsNeu = OrderedDict(), OrderedDict(), []
         for i, char in enumerate(bS):
             if char.isdecimal():
                 """alles was Zahlen sind"""
@@ -84,38 +85,48 @@ def bruchSpalt(text) -> list:
             return []
         bruchSpaltenNeu += [bsNeu]
         if k == 1:
-            vorZahl1 = {} if len(bruchSpaltenNeu[0]) == 1 else bruchSpaltenNeu[0][1]
-            zahl1 = (
-                bruchSpaltenNeu[0][0]
-                if len(bruchSpaltenNeu[0]) == 1
-                else bruchSpaltenNeu[0][2]
+            vorZahl1 = (
+                () if len(bruchSpaltenNeu[0]) == 1 else bruchSpaltenNeu[0][1].values()
             )
-            zahl2 = bruchSpaltenNeu[1][0]
+            zahl1 = (
+                bruchSpaltenNeu[0][0].values()
+                if len(bruchSpaltenNeu[0]) == 1
+                else bruchSpaltenNeu[0][2].values()
+            )
+            zahl2 = bruchSpaltenNeu[1][0].values()
             if k == len(bruchSpalten) - 1:
                 nachZahl2 = (
-                    {} if len(bruchSpaltenNeu[-1]) == 1 else bruchSpaltenNeu[-1][1]
+                    ()
+                    if len(bruchSpaltenNeu[-1]) == 1
+                    else bruchSpaltenNeu[-1][1].values()
                 )
                 bruchSpaltenNeu2 += [vorZahl1, [zahl1, zahl2], nachZahl2]
             else:
                 bruchSpaltenNeu2 += [vorZahl1, [zahl1, zahl2]]
         elif k == len(bruchSpalten) - 1 and k > 1:
-            vorZahl1 = {} if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1]
-            zahl1 = (
-                bruchSpaltenNeu[-2][0]
-                if len(bruchSpaltenNeu[-2]) == 1
-                else bruchSpaltenNeu[-2][2]
+            vorZahl1 = (
+                () if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1].values()
             )
-            zahl2 = bruchSpaltenNeu[-1][0]
-            nachZahl2 = {} if len(bruchSpaltenNeu[-1]) == 1 else bruchSpaltenNeu[-1][1]
+            zahl1 = (
+                bruchSpaltenNeu[-2][0].values()
+                if len(bruchSpaltenNeu[-2]) == 1
+                else bruchSpaltenNeu[-2][2].values()
+            )
+            zahl2 = bruchSpaltenNeu[-1][0].values()
+            nachZahl2 = (
+                () if len(bruchSpaltenNeu[-1]) == 1 else bruchSpaltenNeu[-1][1].values()
+            )
             bruchSpaltenNeu2 += [vorZahl1, [zahl1, zahl2], nachZahl2]
         elif k > 1:
-            vorZahl1 = {} if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1]
-            zahl1 = (
-                bruchSpaltenNeu[-2][0]
-                if len(bruchSpaltenNeu[-2]) == 1
-                else bruchSpaltenNeu[-2][2]
+            vorZahl1 = (
+                () if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1].values()
             )
-            zahl2 = bruchSpaltenNeu[-1][0]
+            zahl1 = (
+                bruchSpaltenNeu[-2][0].values()
+                if len(bruchSpaltenNeu[-2]) == 1
+                else bruchSpaltenNeu[-2][2].values()
+            )
+            zahl2 = bruchSpaltenNeu[-1][0].values()
             bruchSpaltenNeu2 += [vorZahl1, [zahl1, zahl2]]
             # return bruchSpaltenNeu, bruchSpaltenNeu2
     return bruchSpaltenNeu2
