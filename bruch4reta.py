@@ -3,6 +3,10 @@
 
 
 def grKl(A: set, B: set) -> tuple[set, set]:
+    """
+    Gibt 2 Mengen zurück: eine Menge aus allem, das größer ist als im ersten Parameter aus dem zweiten Parameter
+    und in die zweite Menge kommt alles, das kleiner ist, als in der ersten Menge aus der zweiten Menge
+    """
     C = set()
     D = set()
     if len(B) == 0:
@@ -16,6 +20,9 @@ def grKl(A: set, B: set) -> tuple[set, set]:
 
 
 def getDictLimtedByKeyList(d: dict, keys) -> dict:
+    """
+    Gibt ein dict zurück, das aus einem dict gebildet wird, aber davon nur das nimmt, was an mehreren keys genommen werden soll.
+    """
     return {k: d[k] for k in keys if k in d}
 
 
@@ -24,6 +31,7 @@ def bruchSpalt(text) -> list:
     bruchSpaltenNeu = []
     bruchSpaltenNeu2 = []
     if len(bruchSpalten) < 2:
+        """Ein Bruch hat immer mindestens 2 Zahlen"""
         return []
     keineZahl = {}
     for k, bS in enumerate(bruchSpalten):
@@ -31,13 +39,16 @@ def bruchSpalt(text) -> list:
         zahl, keineZahl, bsNeu = {}, {}, []
         for i, char in enumerate(bS):
             if char.isdecimal():
+                """alles was Zahlen sind"""
                 zahl[i] = char
             else:
+                """alles was keine Zahlen sind"""
                 keineZahl[i] = char
         flag: bool = False
         allVergleich: list[bool] = [
             zahl > c for c, zahl in zip(keineZahl.keys(), zahl.keys())
         ]
+        """bool Liste wann es keine ist und wann eine zahl im string"""
         zahlSet: set = set(zahl.keys())
         keineZahlSet: set = set(keineZahl.keys())
         if len(zahlSet) == 0:
@@ -59,8 +70,10 @@ def bruchSpalt(text) -> list:
             return []
         if len(keineZahlSet) > 0:
             zahlenGroesserSet, zahlenKleinerSet = grKl(zahlSet, keineZahlSet)
+            """siehe erklärung der Fkt in Fkt"""
             zahlenKleinerDict: dict = getDictLimtedByKeyList(zahl, zahlenKleinerSet)
             zahlenGroesserDict: dict = getDictLimtedByKeyList(zahl, zahlenGroesserSet)
+            """siehe erklärung der Fkt in Fkt"""
             bsNeu = [zahlenKleinerDict, keineZahl, zahlenGroesserDict]
         else:
             bsNeu = [zahl]
