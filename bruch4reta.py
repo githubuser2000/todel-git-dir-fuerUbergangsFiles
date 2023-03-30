@@ -28,6 +28,13 @@ def getDictLimtedByKeyList(d: dict, keys) -> dict:
 
 
 def bruchSpalt(text) -> list:
+    """
+    Gibt eine Liste aus Tupeln zurück, die entweder einen bis mehrere oder zwei Werte enthalten.
+    Eingabe sind Brüche gemischt mit Textwerten
+    Das Ergebnis bei zwei Werten ist der Bruch
+    Bei ein bis mehreren Werten, also auch 2 handelt es sich um die Textwerte, welche zwischen den Brüchen waren.
+    Die Reihenfolge vom Ergebnis ist die Gleiche, wie bei dem Eingabe-Text
+    """
     bruchSpalten: list[str] = text.split("/")
     bruchSpaltenNeu = []
     bruchSpaltenNeu2 = []
@@ -197,25 +204,37 @@ def dictToList(dict_: dict) -> list:
 #    return "".join(neuZahlVorBruchstrich), "".join(neuZahlNachBruchstrich)
 
 
-def createRangesForBruchLists(bruchList: list):
+def createRangesForBruchLists(bruchList: list) -> tuple:
     n1, n2 = [], []
+    listenRange: range = range(0)
     flag = 0
+    # ergebnis: list[tuple[range | str]] = []
     ergebnis = []
     for b in bruchList:
         if flag > 3:
+            """illegal"""
             return []
         elif flag == 3:
-            ergebnis += [range(n1[-2], n1[-1] + 1), range(n2[-2], n2[-1] + 1)]
+            """Es war ein Bruch"""
+            ergebnis += [str(n2[-2]), "-", str(n2[-1])]
+            listenRange = range(int(n1[-2]), int(n1[-1]) + 1)
+            flag = -1
         if len(b) == 2 and (b[0] + b[1]).isdecimal():
+            """Es ist ein Bruch"""
             n1 += [int(b[0])]
             n2 += [int(b[1])]
             flag += 1
         elif len(b) == 1 and b[0] == "-":
-            # n1 += ["-"]
-            # n2 += ["-"]
+            if flag == -1:
+                return []
             flag += 1
         else:
-            # n1 += ["|"]
-            # n2 += ["|"]
+            """Es ist kein Bruch"""
             flag = 0
-    return ergebnis
+            ergebnis += [b]
+    ergebnis2 = "".join(ergebnis)
+    return listenRange, ergebnis2
+
+
+def alles(text) -> tuple:
+    return createRangesForBruchLists(bruchSpalt(text))
