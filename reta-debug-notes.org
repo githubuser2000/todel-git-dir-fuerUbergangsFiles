@@ -25,3 +25,12 @@
   + Programmiere ich später, muss ich, aber ist bestimmt nicht so aufwändig zu programmieren
 
 =Wo noch Fehler da sind=
+
+=Dokumentation des Testings=
+1. Eingabe und Ausgabe
+2. Was wurde dabei Kombiniert
+
+=noch in rp einzuprogrammieren=
++ dass alxp und x als cli Ausgabe Log-Befehle gehen
+  Dann muss ich nicht mit diesen Doofen Prints arbeiten.
+  + Option zum Weiterreichen dieser Programm-Parameter-Option an die ReTa-Befehle einzuprogrammieren ist unnötig.
