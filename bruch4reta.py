@@ -211,6 +211,8 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
     # ergebnis: list[tuple[range | str]] = []
     ergebnis = []
     for b in bruchList:
+        if flag == -1:
+            return []
         if flag > 3:
             """illegal"""
             return []
@@ -224,14 +226,12 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
             n1 += [int(b[0])]
             n2 += [int(b[1])]
             flag += 1
-        elif len(b) == 1 and b[0] == "-":
-            if flag == -1:
-                return []
+        elif len(b) == 1 and b[0] == "-" and flag > 0:
             flag += 1
         else:
             """Es ist kein Bruch"""
             flag = 0
-            ergebnis += [b]
+            ergebnis += [*b]
     ergebnis2 = "".join(ergebnis)
     return listenRange, ergebnis2
 

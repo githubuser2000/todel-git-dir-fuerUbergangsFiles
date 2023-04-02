@@ -1,0 +1,27 @@
+
+
+=Welche Features alle in Teilen gefragt sind=
+1. die Features
+2. deren Kombis
+=Was erst mal geht=
+
+=Was noch getestet werden muss=
+1. Hintereinanderausführung von
+   1. Plus syntax
+   2. KommaBereichen
+      1. mit unterschiedlichen Dingen im Komma
+2. Minus-syntax
+   1. in Kombi mit Plus Syntax
+   2. KommaBereichen
+      1. mit unterschiedlichen Dingen im Komma
+   3. mit Vielfachern
+   4. auch bei 1/n und n/m, beides und einzeln
+   5. Hintereinanderausführung von Plus Syntax und Kommabereichen
+   6. alle Kombinationsvarianten davon
+3. Die Sache mit dem Quadrat um 90 Grad drehen
+   1. Für all die oben erwähnten Kombi-Möglichkeiten durchtesten
+=Was noch nicht geht=
++ Unterscheidung der beiden Arten von v Syntax
+  + Programmiere ich später, muss ich, aber ist bestimmt nicht so aufwändig zu programmieren
+
+=Wo noch Fehler da sind=
