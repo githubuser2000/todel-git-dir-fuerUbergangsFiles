@@ -34,3 +34,14 @@
 + dass alxp und x als cli Ausgabe Log-Befehle gehen
   Dann muss ich nicht mit diesen Doofen Prints arbeiten.
   + Option zum Weiterreichen dieser Programm-Parameter-Option an die ReTa-Befehle einzuprogrammieren ist unnötig.
+
+=was getestet wurde=
++ a v e 1/5-1/6,-1/10-1/12,1/31-1/32
+  hintereinander viele 1/n mit minus dabei
+*Ich muss programmieren, dass bei reta eine Option eingeführt wird, dass nichts ausgegeben werden soll, wenn es sonst nichts werden würde*
+
+
+fehler bei
+
+08cab8de39944bf4c186ed715b8b8c5163a6e02d
+ba53b5805efdd18cd128abd280ada068e9518070
