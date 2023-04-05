@@ -80,13 +80,13 @@ zahl = sys.argv[1]
 if zahl.isdecimal():
     zahl = int(zahl)
     prFa = primfaktoren(zahl)
-    print("Faktoren: {}".format(prFa))
+    # print("Faktoren: {}".format(prFa))
     auss = [couldBePrimeNumberPrimzahlkreuz_fuer_aussen(a) for a in prFa]
-    print("außen: {}".format(auss))
+    # print("außen: {}".format(auss))
     innen = [couldBePrimeNumberPrimzahlkreuz_fuer_innen(a) for a in prFa]
-    print("innen: {}".format(innen))
+    # print("innen: {}".format(innen))
     zwei = len([a for a in prFa if a == 2])
-    print("zwei: {}".format(zwei))
+    # print("zwei: {}".format(zwei))
     gefuehl = any(auss)
     denken = any(innen)
     # anZahlInnen = len([a for a in innen if True])
@@ -95,6 +95,33 @@ if zahl.isdecimal():
     totalMaterie = zwei > 4
     etwasMaterie = zwei == 4
     wenigMaterie = zwei == 3
+    kaumMaterie = zwei == 2
     x, y, z = denken, (2 in prFa), (3 in prFa)
     totalEnerge = x and y and z
-    einermassenEnerge = ((x and y) or (y and z) or (y and z)) and not totalEnerge
+    einermassenEnergie = ((x and y) or (y and z) or (y and z)) and not totalEnerge
+    kaumEnergie = not einermassenEnergie and not totalEnerge and (x or y or z)
+    ausgabeStringList = []
+    if denken:
+        ausgabeStringList += ["eine Denkart"]
+    if gefuehl:
+        ausgabeStringList += ["eine Gefühlsart"]
+    if totalMaterie:
+        ausgabeStringList += ["total Materie"]
+    if totalTopologie:
+        ausgabeStringList += ["total eine Art Topologie"]
+    if totalEnerge:
+        ausgabeStringList += ["total eine Energie-Art"]
+    if etwasTopologie:
+        ausgabeStringList += ["etwas eine Art Topologie"]
+    if etwasMaterie:
+        ausgabeStringList += ["etwas eine Art Materie"]
+    if wenigMaterie:
+        ausgabeStringList += ["wenig eine Art Materie"]
+    if einermassenEnergie:
+        ausgabeStringList += ["einigermaßen eine Energie-Art"]
+    if kaumEnergie:
+        ausgabeStringList += ["kaum eine Energie-Art"]
+    if kaumMaterie:
+        ausgabeStringList += ["kaum eine Materie-Art"]
+    ausgabeString = "; ".join(ausgabeStringList)
+    print(ausgabeString)
