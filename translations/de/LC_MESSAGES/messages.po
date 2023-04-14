@@ -1,0 +1,143 @@
+# !/usr/bin/env pypy3
+# -*- coding: utf-8 -*-
+# import numpy as np
+# set,
+# def notNormalParameters(parameter, parametervalue, tables):
+# if parameter == "bedeutung" and parametervalue in [
+# "gestirn",
+# "mond",
+# "sonne",
+# "planet",
+# ]:
+# tables.spalteGestirn = True
+# self.intoParameterDatatype
+# self.mainParaCmds2: dict = {
+# 0: "zeilen",
+# 1: "spalten",
+# 2: "kombination",
+# 3: "ausgabe",
+# }
+# kombiSpalten = OrderedSet()
+# ordinarySpalten = OrderedSet()
+# for cmd in self.argv[1:]:
+# if (
+# lastMainCmd == self.mainParaCmds["spalten"]
+# or lastMainCmd == self.mainParaCmds["ausgabe"]
+# ):
+# self.breiteBreitenSysArgvPara(cmd, neg)
+# else:
+# alxp(
+# "shellRowsAmount war in reta.py wegen dem Setzen der Breite auf {}
+# gesetzt".format(
+# shellRowsAmount
+# )
+# "X1 textW von {} in {} ändern".format(self.tables.textWidth, breite)
+# global puniverseprims
+# datas sind nicht die Haupt-und-Neben-Parameter, sondern alles das diese
+# enthalten und meinen können
+# ein datas Datensatz sind alle sets, die ein Haupt-Neben-Parameter
+# Zusammenhang enthalten kann an sets
+# spaltenNummerOderEtc ist hier also eine Zahl von einem set, die z.B. eine
+# Spaltennummer meinen kann
+# das mit 2 Schleifen nur deshalb, damit immer alle Haupt- und
+# Neben-Parameter in die Liste rein kommen
+# i ist die Nummer welches Set es ist
+# (
+# Program.ParametersMain.Multiplikationen,
+# allowedPrimNumbersForCommand,
+# set(),
+# lambda: {  # nur noch ein Platzhalter
+# None,
+# },
+# ),
+# {(359, 360)},
+# Program.ParametersMain.konzept,
+# ("delegieren", "ansammlung"),
+# {(227, 228)},
+# 3: (
+# "Kreativität_und_Intelligenz",
+# "kreativität",
+# "intelligenz",
+# "kreativitaet",
+# 4: (
+# "Liebe",
+# "liebe",
+# 7: (
+# "Männer",
+# "männer",
+# "maenner",
+# "frauen",
+# 9: (
+# "Religion",
+# "religion",
+# "religionen",
+# 12: (
+# "Emotionen",
+# "emotionen",
+# "gefuehle",
+# "gefühle",
+# "emotion",
+# "gefühl",
+# 13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
+# 16: (
+# "Wirtschaftssysteme",
+# "wirtschaftssystem",
+# "wirtschaftssysteme",
+# "kombinierteswirtschaftssystem",
+# "kombiniertewirtschaftssysteme",
+# allValues[1] = allValues[2]
+# alxp(self.paraDictGenerated)
+# alxp("-|-|")
+# alxp(self.paraDictGenerated4htmlTags)
+# alxp("||-|")
+# alxp(self.paraDict)
+# alxp("--|-")
+# alxp(self.dataDict)
+# alxp("--||")
+# for arg in argv[1:]:
+# elif (
+# arg[2 : 2 + len("spaltenreihenfolgeundnurdiese=")]
+# == "spaltenreihenfolgeundnurdiese="
+# print(arg[2:])
+# maxi: dict = {}
+# tabneu = np.chararray((len(self.relitable) + 1,
+# self.tables.hoechsteZeile[1024] + 3), itemsize=5000, unicode = True)
+# self.relitable = np.chararray((len(self.relitable) + 1,
+# self.tables.hoechsteZeile[1024] + 3), itemsize=5000, unicode = True)
+# try:
+# maxi = { u : max(len(c_),maxi[u]) for u,c_ in enumerate(col)}
+# except:
+# maxi = { u : len(c_) for u,c_ in enumerate(col)}
+# self.relitable[i] = np.array(col, dtype=str)
+# avg = maxi.values()
+# avg = sum(avg) / len(avg)
+# x("maxI",avg)
+# x("tabneu", tabneu)
+# self.spaltenArtenNameKey_SpaltenArtenTupleVal_4Key4otherDict = {
+# "ordinary": (0, 0),
+# "generated1": (0, 1),
+# "concat1": (0, 2),
+# "kombi1": (0, 3),
+# "ordinaryNot": (1, 0),
+# "generate1dNot": (1, 1),
+# "concat1Not": (1, 2),
+# "kombi1Not": (1, 3),
+# if "--breite=0" in argv:
+# self.breiteBreitenSysArgvPara("--breite=0", "")
+# except KeyboardInterrupt:
+# sys.exit()
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-04-12 14:09+0200\n"
+"PO-Revision-Date: 2023-04-12 14:09+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+
