@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>zstd-wasm Example</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h1>zstd-wasm Example</h1>
+    <input type="file" id="file-input" />
+    <button onclick="compressFile()">Compress File</button>
+    <button onclick="decompressFile()">Decompress File</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/@bokuweb/zstd-wasm@1.4.9/dist/zstd-wasm.js"></script>
+    <script>
+      async function compressFile() {
+        const fileInput = document.getElementById("file-input");
+        const file = fileInput.files[0];
+        const buffer = await file.arrayBuffer();
+        const compressedBuffer = await zstd.compress(buffer);
+        downloadFile(compressedBuffer, `${file.name}.zst`);
+      }
+
+      async function decompressFile() {
+        const fileInput = document.getElementById("file-input");
+        const file = fileInput.files[0];
+        const buffer = await file.arrayBuffer();
+        const decompressedBuffer = await zstd.decompress(buffer);
+        downloadFile(decompressedBuffer, `${file.name.replace(/\.zst$/, "")}_decompressed`);
+      }
+
+      function downloadFile(buffer, filename) {
+        const blob = new Blob([buffer]);
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      const zstd = createZstdWasm();
+      zstd.onRuntimeInitialized = () => {
+        console.log("zstd-wasm initialized");
+      };
+    </script>
+  </body>
+</html>
+

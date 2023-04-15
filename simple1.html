@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tabellendaten komprimieren</title>
+  </head>
+  <body>
+    <button id="compress-btn">Komprimieren</button>
+    <script src="simple-zstd/index.js"></script>
+    <script>
+      const table = [
+        ['Name', 'Age', 'Gender'],
+        ['John Doe', '30', 'Male'],
+        ['Jane Smith', '25', 'Female'],
+        ['Bob Johnson', '42', 'Male'],
+      ];
+
+      const outputStream = new WritableStream();
+      const compressStream = new SimpleZstd.CompressStream(3);
+
+      table.forEach((row) => {
+        row.forEach((cell) => {
+          compressStream.write(cell + '\n');
+        });
+      });
+
+      compressStream.on('end', () => {
+        console.log('Compression complete!');
+        const compressedData = outputStream.getWriter().getClosedPromise().then((stream) => stream);
+        compressedData.then((data) => console.log(data));
+      });
+
+      compressStream.pipe(outputStream);
+
+      document.getElementById('compress-btn').addEventListener('click', () => {
+        compressedData.then((data) => {
+          const blob = new Blob([data]);
+          const downloadLink = document.createElement('a');
+          downloadLink.href = URL.createObjectURL(blob);
+          downloadLink.download = 'compressed.zst';
+          downloadLink.click();
+        });
+      });
+    </script>
+  </body>
+</html>
+
