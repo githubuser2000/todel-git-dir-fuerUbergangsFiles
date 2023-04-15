@@ -49,7 +49,8 @@ console.log(tableData);
       // Jede Zelle einzeln komprimieren
       for (let row = 0; row < data.length; row++) {
         for (let col = 0; col < data[row].length; col++) {
-          compressedCells.push(pako.deflate(data[row][col], { to: 'string' }));
+          //console.log(data[row][col]);
+          compressedCells.push(pako.deflate(data[row][col]));
         }
       }
 
