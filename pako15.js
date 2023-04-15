@@ -59,7 +59,13 @@ for (let row = 0; row < tableData.length; row++) {
       return buffer;
     });*/
     const cellsValues1 = json3.stringify(tableData[row])
-    const cellsValues = Uint8Array.from(cellsValues1, c => c.charCodeAt(0));
+    /*if (row == 101) {
+        console.log(tableData[row]);
+        console.log("aaa");
+        console.log(cellsValues1);
+    }*/
+    //const cellsValues = Uint8Array.from(cellsValues1, c => c.charCodeAt(0));
+    const cellsValues = new TextEncoder().encode(cellsValues1);
     compressedCells.push(pako.deflate(cellsValues));
   //}
 }
@@ -75,7 +81,7 @@ const compressedCellIndex = (rowIndex * numCols) + colIndex;
 //console.log(decompressedCellValue);
 //console.log((pako.inflate(compressedCells[10])));
 console.log(json3.parse(pako.inflate(compressedCells[100], { to: 'string' }))[5]);
-console.log((pako.inflate(compressedCells[101], { to: 'string' })));
+console.log((pako.inflate(compressedCells[101], { to: 'string' })))
 //console.log(json3.parse(pako.inflate(compressedCells[210], { to: 'string' }))[8]);
 //console.log(JSON.parse(pako.inflate(compressedCells[333], { to: 'string' })));
 /*console.log(pako.inflate-zlib(compressedCells[1000], { to: 'string' }));
@@ -102,7 +108,7 @@ for (let row = 0; row < compressedCells.length; row++) {
 // ...
 
 const dataToSave = {
-  compressedCells2: compressedCells2
+  compressedCells: compressedCells2
 };
 
 fs.writeFileSync('data.json', JSON.stringify(dataToSave));
