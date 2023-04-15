@@ -1,6 +1,6 @@
 // Importieren der LZMA-JS-Bibliothek
 const LZMA = require('lzma');
-
+// KEINE ZENTRALE DATENHALDE
 // Beispiel-Daten
 const data = [
   { id: 1, name: 'Alice' },
@@ -36,4 +36,4 @@ console.log(uncompressedChunks[chunkIndexToDecompress]);
 
 console.log('Dekomprimierter Chunk:');
 console.log(decompressedChunk);
-
+console.log('KEINE ZENTRALE DATENHALDE');
