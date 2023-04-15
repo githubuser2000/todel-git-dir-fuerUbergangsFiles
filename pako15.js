@@ -2,6 +2,7 @@ const fs = require('fs');
 const pako = require('pako');
 const { JSDOM } = require('jsdom');
 //const { saveAs } = require('FileSaver');
+const json3 = require('json3');
 
 const html = fs.readFileSync('/home/alex/middle.html', 'utf8');
 
@@ -21,7 +22,8 @@ for (let i = 0; i < trElements.length; i++) {
   for (let j = 0; j < tdElements.length; j++) {
     const tdElement = tdElements[j];
 
-    const cellValue = Uint8Array.from(tdElement.textContent, c => c.charCodeAt(0));
+    //const cellValue = Uint8Array.from(tdElement.textContent, c => c.charCodeAt(0));
+    const cellValue = tdElement.textContent
     rowData.push(cellValue);
   }
 
@@ -56,7 +58,9 @@ for (let row = 0; row < tableData.length; row++) {
       }
       return buffer;
     });*/
-    compressedCells.push(pako.deflate(tableData[row]));
+    const cellsValues1 = json3.stringify(tableData[row])
+    const cellsValues = Uint8Array.from(cellsValues1, c => c.charCodeAt(0));
+    compressedCells.push(pako.deflate(cellsValues));
   //}
 }
 
@@ -69,9 +73,11 @@ const compressedCellIndex = (rowIndex * numCols) + colIndex;
 //const decompressedCellValue = decompressedCellData[0];
 
 //console.log(decompressedCellValue);
-console.log((pako.inflate(compressedCells[100], { to: 'string' })));
-console.log((pako.inflate(compressedCells[200])));
-console.log((pako.inflate(compressedCells[333], { to: 'string' })));
+//console.log((pako.inflate(compressedCells[10])));
+console.log(json3.parse(pako.inflate(compressedCells[100], { to: 'string' }))[5]);
+console.log((pako.inflate(compressedCells[101], { to: 'string' })));
+//console.log(json3.parse(pako.inflate(compressedCells[210], { to: 'string' }))[8]);
+//console.log(JSON.parse(pako.inflate(compressedCells[333], { to: 'string' })));
 /*console.log(pako.inflate-zlib(compressedCells[1000], { to: 'string' }));
 console.log(pako.inflate-zlib(compressedCells[5000], { to: 'string' }));
 console.log(pako.inflate-zlib(compressedCells[20000], { to: 'string' }));*/
