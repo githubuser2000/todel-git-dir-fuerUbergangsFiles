@@ -112,3 +112,5 @@ const dataToSave = {
 };
 
 fs.writeFileSync('data.json', JSON.stringify(dataToSave));
+console.log("Tabellen-Breite:");
+console.log(compressedCells.length.toString());
