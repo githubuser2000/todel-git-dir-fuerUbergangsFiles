@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>pako Beispiel</title>
+    <script src="pako.min.js"></script>
+    <script src="jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    <script>
+// Lade die HTML-Datei
+fetch("/home/alex/middle.html")
+  .then(response => response.text())
+  .then(html => {
+    // Erstelle ein temporäres Element, um das HTML zu parsen
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = html;
+
+    // Greife auf alle td-Elemente im Dokument zu
+    const tdElements = tempElement.getElementsByTagName('td');
+
+    // Iteriere durch die td-Elemente und gib den Textinhalt aus
+    for (let i = 0; i < tdElements.length; i++) {
+      console.log(tdElements[i].textContent);
+    }
+
+    // Greife auf alle tr-Elemente im Dokument zu
+    const trElements = tempElement.getElementsByTagName('tr');
+
+    // Iteriere durch die tr-Elemente und gib den Textinhalt aus
+    for (let i = 0; i < trElements.length; i++) {
+      console.log(trElements[i].textContent);
+    }
+
+    // Greife auf alle table-Elemente im Dokument zu
+    const tableElements = tempElement.getElementsByTagName('table');
+
+    // Iteriere durch die table-Elemente und gib den Textinhalt aus
+    for (let i = 0; i < tableElements.length; i++) {
+      console.log(tableElements[i].textContent);
+    }
+  });
+     </script>
+  </body>
+</html>

@@ -4,15 +4,46 @@
     <meta charset="UTF-8">
     <title>pako Beispiel</title>
     <script src="pako.min.js"></script>
+    <script src="jquery-3.6.4.min.js"></script>
   </head>
   <body>
     <script>
+    const data = [];
+    // AJAX-Aufruf, um die externe HTML-Datei abzurufen
+    $.ajax({
+      url: "/home/alex/middle.html",
+      success: function(data1) {
+        // Parsen des HTML-Inhalts und Extrahieren der Tabelle
+        const table = $(data1).find("#bigtable");
+
+        // 2D-Array initialisieren
+
+        // Über jede Zeile iterieren
+        table.find("tr").each(function(rowIndex) {
+          data[rowIndex] = [];
+
+          // Über jede Zelle in der Zeile iterieren
+          $(this).find("td").each(function(cellIndex) {
+            const cellText = $(this).text();
+            data[rowIndex][cellIndex] = cellText;
+          });
+        });
+
+        // Daten im 2D-Array ausgeben
+        console.log(data);
+      },
+      error: function() {
+        console.error("Fehler beim Abrufen der Datei");
+      }
+    });
+
+      //const table = document.getElementById("bigtable");
       // 2D-Array mit Beispielwerten
-      const data = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-      ];
+      /*const data = [
+        [1, 2, 3, 11],
+        [4, 5, 6, 12],
+        [7, 8, 9, 13]
+      ];*/
 
       // Array mit zellenkomprimierten Daten
       const compressedCells = [];
@@ -27,7 +58,13 @@
       }
 
       // Nur eine Zelle dekomprimieren
-      const decompressedCellData = pako.inflate(compressedCells[4]);
+      zeilen  = 4
+      spalten = 3
+      zeile = 1 // 1 ist zweite zeile
+      spalte = 2 // 2 ist dritte spalte
+      // fängt von 0 an zu zählen
+      ort =  zeile * zeilen + spalte; // 6
+      const decompressedCellData = pako.inflate(compressedCells[ort]);
       const decompressedCell = decompressedCellData[0];
       console.log(decompressedCell); // 5
     </script>
