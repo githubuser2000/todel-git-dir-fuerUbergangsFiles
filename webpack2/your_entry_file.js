@@ -12,9 +12,5 @@ ZstdInit().then(({ZstdSimple, ZstdStream}) => {
   // Decompress the compressed simple data
   const decompressedSimpleData = ZstdSimple.decompress(someCompressedData);
 
-  // Decompress the compressed stream data
-  const decompressedStreamData = ZstdStream.decompress(someCompressedData);
-
-  console.log('[Simple]', decompressedSimpleData);
-  console.log('[Stream]', decompressedStreamData);
+  console.log('[Simple]', new TextDecoder().decode(decompressedSimpleData));
 });
