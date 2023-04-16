@@ -7,8 +7,7 @@ module.exports = {
     filename: 'bundle.js' // Ausgabedatei
   },
   resolve: {
-    alias: {
-      //zstd: '@oneidentity/zstd-js/decompress' // Verwenden Sie das alias "zstd" für das "decompress"-Modul
+      alias:  {  loadCompressedData: 'functions.js',
       zstd: '@oneidentity/zstd-js/asm/decompress' // Verwenden Sie das alias "zstd" für das "decompress"-Modul
     }
   },
