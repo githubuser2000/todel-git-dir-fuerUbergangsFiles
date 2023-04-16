@@ -33,7 +33,8 @@ for (let i = 0; i < trElements.length; i++) {
     const tdElement = tdElements[j];
 
     //const cellValue = Uint8Array.from(tdElement.textContent, c => c.charCodeAt(0));
-    const cellValue = tdElement.textContent
+    //const cellValue = tdElement.textContent
+    const cellValue = tdElement.innerHTML
     rowData.push(cellValue);
   }
 
@@ -99,6 +100,7 @@ ZstdInit().then(({ZstdSimple, ZstdStream}) => {
     };
 
     fs.writeFileSync('data.json', JSON.stringify(dataToSave));
+    fs.writeFileSync('webpack2/data.json', JSON.stringify(dataToSave));
     console.log("Tabellen-Breite:");
     console.log(compressedCells2.length.toString());
 });

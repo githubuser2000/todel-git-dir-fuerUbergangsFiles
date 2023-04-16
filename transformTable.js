@@ -15,3 +15,8 @@ const data = JSON.parse(fs.readFileSync("data.json"));
 const komprTabSpalts = JSON.stringify(data.compressedCells);
 $("body").append(`<script>const komprTabSpalts = ${komprTabSpalts};</script>`);
 fs.writeFileSync('/home/alex/meine_neue_tabelle.html', $.html());
+
+dazu2 = (`const komprTabSpalts = ${komprTabSpalts};`);
+const html2 = fs.readFileSync('/home/alex/myRepos/todel-git-dir-fuerUbergangsFiles/webpack2/your_entry_file.js', 'utf8');
+fs.writeFileSync('/home/alex/myRepos/todel-git-dir-fuerUbergangsFiles/webpack2/your_entry_file2.js', html2+"\n"+dazu2);
+
