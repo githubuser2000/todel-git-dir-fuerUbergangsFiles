@@ -11,4 +11,7 @@ const $ = cheerio.load(html);
 $('#bigtable td').empty();
 
 // Speichere die veränderte HTML-Datei in einer neuen Datei
+const data = JSON.parse(fs.readFileSync("data.json"));
+const komprTabSpalts = JSON.stringify(data.compressedCells);
+$("body").append(`<script>const komprTabSpalts = ${komprTabSpalts};</script>`);
 fs.writeFileSync('/home/alex/meine_neue_tabelle.html', $.html());
