@@ -4,10 +4,14 @@ module.exports = {
   entry: './your_entry_file2.js', // Pfad zu Ihrer Eintrittsdatei
   output: {
     path: path.resolve(__dirname, 'dist'), // Ausgabeverzeichnis
-    filename: 'bundle.js' // Ausgabedatei
+    filename: 'bundle.js',// Ausgabedatei
+    library: {
+      name: 'myLibrary',
+      type: 'var',
+    },
   },
   resolve: {
-      alias:  {  loadCompressedData: 'functions.js',
+      alias:  {  alx: './functions.js',
       zstd: '@oneidentity/zstd-js/asm/decompress' // Verwenden Sie das alias "zstd" für das "decompress"-Modul
     }
   },

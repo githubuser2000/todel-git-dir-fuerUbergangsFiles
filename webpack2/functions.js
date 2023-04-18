@@ -20,7 +20,7 @@ export function loadCompressedData(i, k) {
       const decompressedSimpleData2 = new TextDecoder().decode(decompressedSimpleData1);
       const decompressedSimpleData3 = parse(decompressedSimpleData2)
 
-      console.log('[Simple]', decompressedSimpleData3);
+      console.log('[Simple]', decompressedSimpleData3[k]);
       return decompressedSimpleData3[k];
     });
 }
