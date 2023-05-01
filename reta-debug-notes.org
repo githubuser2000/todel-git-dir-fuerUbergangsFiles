@@ -45,3 +45,25 @@ fehler bei
 
 08cab8de39944bf4c186ed715b8b8c5163a6e02d
 ba53b5805efdd18cd128abd280ada068e9518070
+
+
+
+* neu test 2023-04-20
++ nachdem ich Übersetzbarkeit und stext cursor einprogrammiert habe
+*** Tests
++ einfache befehle
+  + scheinen zu gehen
++ gebrochene Zahlen
+  + scheinen zu gehen
++ reta Befehle
++ Speicherung
+  + scheint erst mal wieder zu gehen
+  + ob reta befehl und dann einzelangabe und mit v und w
+    + scheine ich wieder hinbekommen zu haben
++ sonstige Befehle
+**** was geht sonst noch
++ die Hilfen gehen zu printen
++ EIGR und EIGN gehen jetzt auch wieder
++ abstand geht jetzt mit fance Bereich2 Funktion
++ python und shell befehl geht.
+**** In den Code rein gehen, um zu schauen, was ich noch testen sollte
