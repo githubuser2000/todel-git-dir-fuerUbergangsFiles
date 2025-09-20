@@ -28,7 +28,21 @@ def spalte_aus_csv_ausgeben(dateiname, spaltennummer):
     except Exception as e:
         print(f"[FEHLER] {e}")
 
-if __name__ == "__main__" or True:
+def start():
+    if len(sys.argv) != 3:
+        print("Verwendung: pypy3 spalte_auslesen.py <dateiname.csv> <spaltennummer>")
+        sys.exit(1)
+
+    dateiname = sys.argv[1]
+    try:
+        spaltennummer = int(sys.argv[2])
+    except ValueError:
+        print("[FEHLER] Die Spaltennummer muss eine Ganzzahl sein.")
+        sys.exit(1)
+
+    spalte_aus_csv_ausgeben(dateiname, spaltennummer)
+
+if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Verwendung: pypy3 spalte_auslesen.py <dateiname.csv> <spaltennummer>")
         sys.exit(1)
