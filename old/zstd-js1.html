@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ZSTD-JS Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/zstd-js@1.4.9/dist/zstd-codec.min.js"></script>
+</head>
+<body>
+  <script>
+    // Komprimieren
+    const compressedChunks = [];
+    for (let i = 0; i < chunks.length; i++) {
+      compressedChunks.push(zstd.compress(chunks[i]));
+    }
+
+    // Dekomprimieren
+    const selectedChunk = compressedChunks[0];
+    const decompressedChunk = zstd.decompress(selectedChunk);
+  </script>
+</body>
+</html>

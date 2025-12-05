@@ -1,0 +1,61 @@
+import System
+import System.File
+
+import Data.String
+import Data.List
+
+import Data.Time
+
+-- Pfad zur Log-Datei
+logFile : String
+logFile = "/home/dein_user/clipboard.log"
+
+-- Intervall in Sekunden
+interval : Int
+interval = 2
+
+-- Hash-Funktion (sehr einfach, für Demo-Zwecke, keine echte SHA256)
+simpleHash : String -> String
+simpleHash s = show (foldl (\acc c => acc + cast c) 0 s)
+
+-- Clipboard auslesen via wl-paste
+getClipboard : IO String
+getClipboard = do
+  (exitCode, stdout, stderr) <- run "wl-paste" ["-n"]
+  pure (strip stdout)
+
+-- Strip trailing newline
+strip : String -> String
+strip s = reverse (dropWhile (\c => c == '\n' || c == '\r') (reverse s))
+
+-- Loggt Clipboard-Inhalt
+logClipboard : String -> IO ()
+logClipboard content = do
+  now <- nowTime
+  let timestamp = show now
+  appendFile logFile ("[" ++ timestamp ++ "]\n" ++ content ++ "\n\n")
+
+-- Hauptloop
+loop : String -> IO ()
+loop lastHash = do
+  content <- getClipboard
+  let currentHash = simpleHash content
+  if content /= "" && currentHash /= lastHash then do
+    logClipboard content
+    putStrLn ("Neuer Clipboard-Inhalt geloggt: " ++ take 30 content ++ "...")
+    loop currentHash
+  else do
+    -- warten
+    delay (interval * 1000) -- ms
+    loop lastHash
+
+-- Zeitfunktion
+nowTime : IO String
+nowTime = do
+  t <- now
+  pure (show t)
+
+-- Start
+main : IO ()
+main = loop ""
+

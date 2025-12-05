@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>pako Beispiel</title>
+    <script src="pako.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // 2D-Array mit Beispielwerten
+      const data = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+      ];
+
+      // Array mit Spaltenkomprimierten Daten
+      const compressedColumns = [];
+
+      // Jede Spalte einzeln komprimieren
+      for (let col = 0; col < data[0].length; col++) {
+        const columnData = new Uint8Array(data.length);
+        for (let row = 0; row < data.length; row++) {
+          columnData[row] = data[row][col];
+        }
+        compressedColumns.push(pako.deflate(columnData));
+      }
+
+      // Nur eine Spalte dekomprimieren
+      const decompressedColumnData = pako.inflate(compressedColumns[1]);
+      const decompressedColumn = new Uint8Array(decompressedColumnData);
+      console.log(decompressedColumn); // [2, 5, 8]
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<table id="bigtable">
+  <thead>
+    <tr>
+      <th>Spalte 1</th>
+      <th>Spalte J</th>
+      <th style="display:none;">Spalte 3</th>
+      <th>Spalte H</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>F</td>
+      <td style="display:none;">3</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>2</td>
+      <td style="display:none;">3</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>B</td>
+      <td style="display:none;">3</td>
+      <td>A</td>
+    </tr>
+  </tbody>
+</table>
+<script>
+const bigtable = document.querySelector('#bigtable');
+const cells = bigtable.querySelectorAll('td, th');
+
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'style' && mutation.target.style.display !== 'none') {
+      const index = Array.from(mutation.target.parentNode.children).indexOf(mutation.target);
+      for (let i = 0; i < cells.length; i++) {
+        if (cells[i].cellIndex === index) {
+          cells[i].textContent = `${index + 1}`;
+        }
+      }
+    }
+  });
+});
+
+observer.observe(bigtable, {attributes: true, subtree: true});
+
+const columns = bigtable.querySelectorAll('td[style="display:none"]');
+
+columns.forEach(function(column) {
+  column.style.display = '';
+});
+const columns2 = bigtable.querySelectorAll('th[style="display:none"]');
+
+columns2.forEach(function(column) {
+  column.style.display = '';
+});
+</script>

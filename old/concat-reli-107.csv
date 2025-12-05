@@ -1,0 +1,20 @@
+"Zahlenart";1
+"Index eines Indexes oder Ziffer eines Registers also einfach indirekt doppelt bei Index eines Indexes";2
+"Register für Zahl also Zahl meint Register statt Zahl statt Index, Index einer Ziffer einer Zahl also doppelt indirekt";3
+"Index einer zahl die womöglich existiert";4
+"Ziffern z.B. von 0 bis 9 oder 0 bis F also 0 bis 15 oder 1 bis 2";5
+"Ganze Zahlen Natürliche Zahlen einfache Zahlen, Index einer komplexen Zahl";6
+"negative Zahlen oder Zahlen mit explizierten Plus Vorzeichen oder komple Ziffern als Symbol odeer Zahlenschreibweise irgendwas";7
+"Komplexe Zahlen";8
+"Reziproke, z.B. 1/n";9
+"Vielleicht Quaternionen, Index einer rationalen Zahl";10
+"Rationale Ziffern, z.B. Fließkommazahlen oder Symbole";11
+"Rationale Zahl Bruchzahl aus 2 einfachen Zahlen";12
+"P adische Zahlen";13
+"N adische Zahlen sind p adische erweitert auf natürliche Zahlen (sehen wie normale aus aber werden wie p adische weiter verrechnet)";14
+"Zahl welche indirekt eine zahl generiert, durch etwas weiteres, z.B wenn Zahl gleichzeitig der weitere Operand ist und oder zusätzlich oder allein oder beides die Operation dazu meint, dann kann es Zahl plus Zahl oder Zahl mal Zahl oder Zahl hoch Zahl meinen und ergibt hier die Ergebniszahl, wie auch immer, eine Zahl";15
+"Polynombasiert algebraisch oft irrational";16
+"Algorithmen basiert transzendent oft irrational";17
+"P adische rationale zahlen mit möglichen perioden vor und hinter dem komma auch, nicht irrational";18
+"Perfektoid, oft irrational";19
+"Rationale Quaternionen";20

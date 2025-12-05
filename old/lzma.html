@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LZMA Example</title>
+  </head>
+  <body>
+    <input type="file" id="file-input" />
+    <button onclick="handleClick()">Dekomprimieren</button>
+
+    <script src="lzma/src/lzma.js"></script>
+    <script>
+      var my_lzma = new LZMA("lzma/src/lzma_worker.js");
+      function handleClick() {
+        const fileInput = document.getElementById("file-input");
+        const file = fileInput.files[0];
+
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+        reader.onload = function () {
+          my_lzma.decompress(reader.result, function (result, error) {
+            if (error) {
+              console.error(error);
+              return;
+            }
+            console.log(result);
+          });
+        };
+        console.log("ende");
+      }
+    </script>
+  </body>
+</html>
+

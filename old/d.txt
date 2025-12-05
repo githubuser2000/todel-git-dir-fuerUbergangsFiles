@@ -1,0 +1,7 @@
+bothCols
+cat
+conti
+econ567
+inkrement
+outCsvCol
+zeile
