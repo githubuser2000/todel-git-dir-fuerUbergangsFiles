@@ -1,0 +1,37 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "gitlab"]
+    url = git@gitlab-ak_trace:githubuser2000/Dokumente-txt.git
+    pushurl = git@gitlab-ak_trace:githubuser2000/Dokumente-txt.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "github"]
+    url = git@github-trace:githubuser2000/Dokumente-txt
+    pushurl = git@github-trace:githubuser2000/Dokumente-txt
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "v6"]
+    url = v6a:/home/alex/Eigene-Dateien/myRepos/gitRemoteRepos/Dokumente-txt.git
+    pushurl = v6a:/home/alex/Eigene-Dateien/myRepos/gitRemoteRepos/Dokumente-txt.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "l3"]
+    url = /home/alex/Eigene-Dateien/myRepos/remote.gits/Dokumente-txt.git
+    pushurl = /home/alex/Eigene-Dateien/myRepos/remote.gits/Dokumente-txt.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "tab"]
+    url = tab:/data/data/com.termux/files/home/Eigene-Dateien/myRepos/remote.gits/Dokumente-txt.git
+    pushurl = tab:/data/data/com.termux/files/home/Eigene-Dateien/myRepos/remote.gits/Dokumente-txt.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "asot"]
+    url = git@asot-trace:~alexkerntrace/Dokumente-txt
+    pushurl = git@asot-trace:~alexkerntrace/Dokumente-txt
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "rus"]
+    url =  https://alexkerntrace:abcdefG8@gitflic.ru/project/alexkerntrace/dokumente-txt.git
+    pushurl =  https://alexkerntrace:abcdefG8@gitflic.ru/project/alexkerntrace/dokumente-txt.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+

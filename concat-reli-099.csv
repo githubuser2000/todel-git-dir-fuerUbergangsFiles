@@ -1,0 +1,12 @@
+Neues K Kontinuum;Begründung;Verbundgrad;Nr.;
+Radialfäden (Speichenfäden);Sie verbinden die Nabe mit dem Rahmen, kreuzen viele andere Fäden (Hilfsspirale, Fangspirale) und bilden das tragende Skelett des Netzes.;hoch;1;
+Rahmenfäden (Rahmenstruktur);Umfassen das gesamte Netz und verbinden alle Radialfäden an der Peripherie – wesentlich für Gesamtstabilität und Spannung.;hoch;2;
+Nabe (Zentrum);"Zentraler Verbindungspunkt aller Radialfäden; struktureller und funktionaler Mittelpunkt des Netzes.";hoch;3;
+Fangspirale (Klebespirale);"Berührt alle Radialfäden; verknüpft Netzbereiche funktional (Beutefang), stabilisiert aber weniger stark als Rahmen und Speichen.";mittel–hoch;4;
+Hilfsspirale (Bauhilfsspirale);Temporäres Verbindungselement, das während des Baus Orientierung und Spannung gibt, danach aber teilweise entfernt wird.;mittel;5;
+Brückenfäden;"Dienen als erste Verbindungsbasis und tragen nach außen zur Befestigung bei; verbinden äußere Punkte, aber nicht viele interne Elemente.";mittel;6;
+Stützfäden (Sekundärfäden);Verstärken lokale Spannungen und verbinden Teilbereiche, sind aber keine Hauptachsen.;mittel;7;
+Rahmenkreuzungen;"Lokale Verbindungsknoten zwischen Rahmen- und Radialfäden; wichtig für Festigkeit, aber nur punktuell wirksam.";mittel–niedrig;8;
+Anheftungspunkte (Verankerungsfäden);"Verbinden das Netz mit der Umgebung; wichtig für Halt, aber nicht für interne Strukturvernetzung.";niedrig–mittel;9;
+Signal- oder Meldefaden;"Verbunden meist nur mit Nabe und Rückzugsort der Spinne; funktional wichtig, strukturell aber kaum verbindend.";niedrig;10;
+Anheftungsschleifen (Verklebungspunkte);"Sehr kleine lokale Verbindungen zur Fixierung; kaum Einfluss auf das Gesamtgefüge.";niedrig;11;
